@@ -1,0 +1,14 @@
+# Core analysis
+pandas
+numpy
+
+# Database and SQL
+sqlalchemy
+
+# Visualization
+matplotlib
+seaborn
+
+# Notebook workflow
+jupyter
+
