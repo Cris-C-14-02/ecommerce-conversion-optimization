@@ -1,0 +1,28 @@
+{
+  "model_metrics": {
+    "train_rows": 1126064,
+    "test_rows": 281516,
+    "positive_rate_train": 0.008325,
+    "positive_rate_test": 0.008326,
+    "accuracy": 0.976904,
+    "precision": 0.254429,
+    "recall": 0.918942,
+    "roc_auc": 0.970613
+  },
+  "ab_test_summary": {
+    "target_users": 27146,
+    "expected_uplift_assumption": 0.15,
+    "baseline_rate_assumption_min": 0.02,
+    "baseline_rate_assumption_max": 0.12,
+    "expected_treatment_conversion_rate": 0.134099,
+    "expected_control_conversion_rate": 0.116602,
+    "absolute_uplift": 0.017498,
+    "relative_uplift": 0.150064
+  },
+  "coze_input": {
+    "funnel_insight": "The largest drop-off is from product view to add-to-cart.",
+    "priority_segment": "Carted but not purchased users with high predicted purchase probability.",
+    "recommended_action": "Target the high and very_high carted non-purchasers with remarketing incentives.",
+    "modeling_note": "Training excludes purchase-derived features to avoid target leakage."
+  }
+}
