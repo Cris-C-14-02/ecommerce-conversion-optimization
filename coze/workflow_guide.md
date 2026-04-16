@@ -2,7 +2,7 @@
 
 ## Goal
 
-Turn analysis outputs from SQL and Python into a repeatable Coze workflow that generates business-ready insight summaries.
+Keep a clean interface for optionally sending analysis outputs from SQL and Python into a Coze workflow that generates business-ready insight summaries.
 
 ## Suggested Flow
 
@@ -12,11 +12,11 @@ Turn analysis outputs from SQL and Python into a repeatable Coze workflow that g
    - `outputs/results/user_segment_summary.csv`
    - `outputs/results/top_remarketing_targets.csv`
    - `outputs/results/ab_test_group_summary.csv`
-3. Merge the key results into a single JSON payload that matches `coze/insight_schema.json`.
+3. If Coze integration is needed, merge the key results into a single JSON payload that matches `coze/insight_schema.json`.
 4. Feed that payload into Coze together with `coze/prompt_template.md`.
 5. Ask Coze to return a business insight report for marketing or product stakeholders.
 
-## Recommended Coze Nodes
+## Optional Coze Nodes
 
 - Input node: structured JSON metrics from SQL and modeling outputs
 - LLM node: prompt from `coze/prompt_template.md`
@@ -49,9 +49,9 @@ Turn analysis outputs from SQL and Python into a repeatable Coze workflow that g
 - What strategy is most likely to improve conversion in the short term?
 - What uplift can the business expect if the treatment works as simulated?
 
-## Final Deliverable Idea
+## Optional Deliverable Idea
 
-Use Coze to generate:
+Use Coze, if needed, to generate:
 
 - a one-paragraph executive summary
 - a short action plan

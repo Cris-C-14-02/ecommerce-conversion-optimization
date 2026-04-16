@@ -1,6 +1,6 @@
 # ecommerce-conversion-optimization
 
-E-commerce conversion optimization project for data analysis, SQL exploration, modeling scripts, visualization outputs, and Coze workflow assets.
+E-commerce conversion optimization project for data analysis, SQL exploration, modeling scripts, and visualization outputs, with a reserved interface for optional Coze integration.
 
 A small sample (100 rows) of the engineered user-level dataset is included for demonstration purposes. The full dataset is stored in MySQL and used for modeling.
 
@@ -32,14 +32,14 @@ ecommerce-conversion-optimization/
 - `outputs/figures/`: charts and visual assets.
 - `outputs/results/`: exported metrics, tables, and model results.
 - `notebooks/`: exploratory analysis notebooks.
-- `coze/`: Coze prompts, configs, or workflow files.
+- `coze/`: reserved templates and interface files for optional Coze integration.
 
 ## Project Goals
 - Load Kaggle e-commerce dataset into MySQL
 - Build user-level features
 - Train a logistic regression model
 - Simulate targeted marketing uplift
-- Generate business insights with Coze
+- Preserve an interface for optional AI insight generation
 
 ## Current Workflow
 
@@ -51,7 +51,7 @@ events_raw
 -> feature engineering
 -> logistic regression scoring
 -> A/B test simulation
--> Coze insight generation
+-> optional Coze interface
 ```
 
 ## Modeling Output
@@ -114,16 +114,18 @@ python scripts/model.py
 
 The same environment variables are used by `scripts/load_to_mysql.py`.
 
-## Coze Assets
+## Coze Interface
 
 The `coze/` folder now includes:
 
-- `prompt_template.md`: prompt for business insight generation
-- `insight_schema.json`: example structured payload
-- `workflow_guide.md`: how to connect SQL + modeling outputs into a Coze workflow
+- `prompt_template.md`: optional prompt template for business insight generation
+- `insight_schema.json`: example structured payload for external AI tools
+- `workflow_guide.md`: reference for connecting SQL + modeling outputs into Coze if needed
 
-These assets are designed to support the final project step:
+These files are kept as a reserved interface layer. The core project scope remains:
 
 ```text
-data analysis -> model -> strategy simulation -> Coze business insight agent
+data analysis -> model -> strategy simulation
 ```
+
+If needed later, the reserved Coze interface can be used to convert structured outputs into business-facing narrative summaries.
