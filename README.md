@@ -2,6 +2,8 @@
 
 E-commerce conversion optimization project for data analysis, SQL exploration, modeling scripts, visualization outputs, and Coze workflow assets.
 
+A small sample (100 rows) of the engineered user-level dataset is included for demonstration purposes. The full dataset is stored in MySQL and used for modeling.
+
 ## Project Structure
 
 ```text
