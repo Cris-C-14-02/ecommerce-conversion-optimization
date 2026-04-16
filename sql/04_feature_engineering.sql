@@ -6,39 +6,42 @@ USE ecommerce;
 
 DROP TABLE IF EXISTS user_features;
 
-CREATE TABLE user_features AS
+CREATE TABLE user_features (
+    visitorid BIGINT,
+    view_count INT,
+    cart_count INT,
+    purchase_count INT,
+    has_viewed TINYINT,
+    has_carted TINYINT,
+    has_purchased TINYINT,
+    view_to_cart_rate DOUBLE,
+    cart_to_purchase_rate DOUBLE,
+    label_purchase TINYINT
+);
+
+CREATE INDEX idx_visitorid_event ON events_raw(visitorid, event);
+
+INSERT INTO user_features
 SELECT 
     visitorid,
 
-    -- 行为计数
     COUNT(CASE WHEN event = 'view' THEN 1 END) AS view_count,
     COUNT(CASE WHEN event = 'addtocart' THEN 1 END) AS cart_count,
     COUNT(CASE WHEN event = 'transaction' THEN 1 END) AS purchase_count,
 
-    -- 行为强度（是否发生过）
     MAX(CASE WHEN event = 'view' THEN 1 ELSE 0 END) AS has_viewed,
     MAX(CASE WHEN event = 'addtocart' THEN 1 ELSE 0 END) AS has_carted,
     MAX(CASE WHEN event = 'transaction' THEN 1 ELSE 0 END) AS has_purchased,
 
-    -- 转化率特征（非常关键）
-    COUNT(CASE WHEN event = 'addtocart' THEN 1 END) * 1.0 
+    COUNT(CASE WHEN event = 'addtocart' THEN 1 END) * 1.0
         / NULLIF(COUNT(CASE WHEN event = 'view' THEN 1 END), 0) AS view_to_cart_rate,
 
-    COUNT(CASE WHEN event = 'transaction' THEN 1 END) * 1.0 
+    COUNT(CASE WHEN event = 'transaction' THEN 1 END) * 1.0
         / NULLIF(COUNT(CASE WHEN event = 'addtocart' THEN 1 END), 0) AS cart_to_purchase_rate,
 
-    -- 标签（预测目标）
     MAX(CASE WHEN event = 'transaction' THEN 1 ELSE 0 END) AS label_purchase
 FROM events_raw
 GROUP BY visitorid;
-
--- Preview
-SELECT * FROM user_features LIMIT 10;
-
--- Check label distribution
-SELECT label_purchase, COUNT(*) 
-FROM user_features
-GROUP BY label_purchase;
 
 -- =========================
 -- Export Sample for GitHub
@@ -49,4 +52,4 @@ GROUP BY label_purchase;
 
 SELECT *
 FROM user_features
-LIMIT 10000;
+LIMIT 100;
