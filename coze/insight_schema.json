@@ -1,0 +1,45 @@
+{
+  "project_name": "E-commerce User Conversion Optimization",
+  "funnel_summary": {
+    "view_users": 1404179,
+    "cart_users": 37722,
+    "purchase_users": 11719,
+    "view_to_cart_rate": 0.02686,
+    "cart_to_purchase_rate": 0.31067,
+    "overall_conversion_rate": 0.00835
+  },
+  "user_path_summary": {
+    "only_viewed_users": 1368715,
+    "cart_not_purchase_users": 27146,
+    "view_cart_purchase_users": 10228,
+    "anomaly_note": "Some users purchased or carted without a recorded view, likely due to tracking gaps or logging noise."
+  },
+  "model_metrics": {
+    "accuracy": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "roc_auc": 0.0
+  },
+  "segment_summary": [
+    {
+      "user_segment": "low",
+      "users": 0,
+      "avg_pred_prob": 0.0,
+      "actual_purchase_rate": 0.0
+    }
+  ],
+  "ab_test_summary": {
+    "target_users": 0,
+    "expected_treatment_conversion_rate": 0.0,
+    "expected_control_conversion_rate": 0.0,
+    "absolute_uplift": 0.0,
+    "relative_uplift": 0.0
+  },
+  "top_target_users": [
+    {
+      "visitorid": 0,
+      "pred_prob": 0.0,
+      "user_segment": "very_high"
+    }
+  ]
+}

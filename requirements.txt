@@ -1,9 +1,11 @@
 # Core analysis
 pandas
 numpy
+scikit-learn
 
 # Database and SQL
 sqlalchemy
+pymysql
 
 # Visualization
 matplotlib
@@ -11,4 +13,3 @@ seaborn
 
 # Notebook workflow
 jupyter
-

@@ -8,6 +8,7 @@ __pycache__/
 .venv/
 venv/
 env/
+.env
 
 # Data and outputs
 data/raw/*
@@ -25,4 +26,3 @@ outputs/results/*
 .DS_Store
 Thumbs.db
 .vscode/
-
