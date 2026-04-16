@@ -1,6 +1,7 @@
 -- =========================
 -- Data Check: events_raw
 -- =========================
+USE ecommerce;
 
 -- 1. Preview data
 SELECT * FROM events_raw LIMIT 10;
