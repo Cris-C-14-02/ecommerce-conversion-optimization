@@ -4,14 +4,7 @@ USE ecommerce;
 -- Funnel Analysis
 -- =========================
 
--- 1. User counts at each stage
-SELECT 
-    COUNT(DISTINCT CASE WHEN event = 'view' THEN visitorid END) AS view_users,
-    COUNT(DISTINCT CASE WHEN event = 'addtocart' THEN visitorid END) AS cart_users,
-    COUNT(DISTINCT CASE WHEN event = 'transaction' THEN visitorid END) AS purchase_users
-FROM events_raw;
-
--- 2. Conversion rates
+-- User counts at each stage and conversion rates
 SELECT 
     view_users,
     cart_users,

@@ -4,8 +4,9 @@ USE ecommerce;
 -- User Path Analysis
 -- =========================
 
--- Step 1: Build user-level behavior flags
+DROP VIEW IF EXISTS user_flags;
 
+CREATE VIEW user_flags AS
 SELECT 
     visitorid,
     MAX(CASE WHEN event = 'view' THEN 1 ELSE 0 END) AS viewed,
@@ -14,24 +15,25 @@ SELECT
 FROM events_raw
 GROUP BY visitorid;
 
--- Step 2: Count user path distribution
+-- Step 1: Preview user-level flags
+SELECT *
+FROM user_flags
+LIMIT 10;
 
+-- Step 2: Count user path distribution
 SELECT 
     viewed,
     carted,
     purchased,
     COUNT(*) AS user_count
-FROM (
-    SELECT 
-        visitorid,
-        viewed,
-        carted,
-        purchased
-    FROM events_raw
-    GROUP BY visitorid
-) t
+FROM user_flags
 GROUP BY viewed, carted, purchased
 ORDER BY user_count DESC;
+
+-- Step 3: Count users who added to cart but did not purchase
+SELECT COUNT(*) AS cart_not_purchase_users
+FROM user_flags
+WHERE carted = 1 AND purchased = 0;
 
 -- =========================
 -- User Path Analysis Result
@@ -53,20 +55,5 @@ ORDER BY user_count DESC;
 -- 3. Conversion from cart to purchase exists but still leaves optimization space
 -- 4. Some abnormal paths exist (e.g., purchase without view), likely due to tracking limitations or data noise
 
--- Users who added to cart but did not purchase
-
-SELECT COUNT(*) AS cart_not_purchase_users
-FROM (
-    SELECT 
-        visitorid,
-        carted,
-        purchased
-    FROM events_raw
-    GROUP BY visitorid
-) t
-WHERE carted = 1 AND purchased = 0;
-
--- 27146 users added to cart but did not purchase
-  
 -- Conclusion:
 -- Focus should be on improving view-to-cart conversion and targeting cart-but-no-purchase users.
