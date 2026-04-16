@@ -19,7 +19,7 @@ CREATE TABLE user_features (
     label_purchase TINYINT
 );
 
-CREATE INDEX idx_visitorid_event ON events_raw(visitorid, event);
+-- CREATE INDEX idx_visitorid_event ON events_raw(visitorid, event);
 
 INSERT INTO user_features
 SELECT 
